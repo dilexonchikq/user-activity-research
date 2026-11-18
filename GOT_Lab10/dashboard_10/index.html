@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Game of Thrones Analytics Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="shell">
+    <header><div class="brand"><div class="sigil">♛</div><div><p class="eyebrow">THE REALM · BOOK DATA</p><h1>Game of Thrones<br><span>Analytics Dashboard</span></h1></div></div><div class="header-right"><span class="status"><i></i> OFFLINE READY</span><p>Character deaths · A Song of Ice and Fire</p></div></header>
+    <div class="layout">
+      <aside class="filters"><div class="filter-heading"><div><p class="eyebrow">EXPLORE THE REALM</p><h2>Filters</h2></div><button id="reset" type="button">Reset all</button></div>
+        <label>Book of death<select id="book"><option value="">All books</option></select></label>
+        <label>Death year<select id="year"><option value="">All years</option></select></label>
+        <div class="house-label"><label for="houses">Allegiance / house</label><span id="house-count">All</span></div><input id="house-search" type="search" placeholder="Find a house…" aria-label="Find a house"><div id="houses" class="house-list" role="group" aria-label="Select houses"></div>
+        <label>Gender<select id="gender"><option value="">All genders</option></select></label>
+        <label>Nobility<select id="nobility"><option value="">All statuses</option></select></label>
+        <label>Death record<select id="status"><option value="">All records</option></select></label>
+        <div class="filter-note">Filters are linked. Each selection updates every metric, chart and table.</div>
+      </aside>
+      <main><div class="section-head"><div><p class="eyebrow">OVERVIEW</p><h2>The numbers behind the story</h2></div><p id="result-count"></p></div>
+        <section class="kpis" aria-label="Key metrics"><article><span>CHARACTERS</span><strong id="kpi-total">—</strong><small>in current selection</small></article><article><span>KNOWN DEATH YEAR</span><strong id="kpi-known">—</strong><small>records with a year</small></article><article><span>AVERAGE DEATH YEAR</span><strong id="kpi-average">—</strong><small>book chronology</small></article><article><span>TOP DEATH BOOK</span><strong id="kpi-book">—</strong><small id="kpi-book-sub">most records</small></article></section>
+        <section class="grid"><article class="panel"><div class="panel-head"><div><p class="eyebrow">01 · BOOK CHRONOLOGY</p><h3>Deaths by book</h3></div><span class="panel-tag">307 records in source</span></div><div id="bar-chart" class="chart"></div></article>
+          <article class="panel"><div class="panel-head"><div><p class="eyebrow">02 · ALLEGIANCE</p><h3>Characters by house</h3></div><span class="panel-tag">Top 6 + other</span></div><div id="donut-chart" class="chart"></div></article>
+          <article class="panel"><div class="panel-head"><div><p class="eyebrow">03 · TIME</p><h3>Deaths by year</h3></div><span class="panel-tag">Known years only</span></div><div id="line-chart" class="chart"></div></article>
+          <article class="panel"><div class="panel-head"><div><p class="eyebrow">04 · CROSS TABULATION</p><h3>Book × house</h3></div><span class="panel-tag">Top houses</span></div><div id="heatmap" class="chart"></div></article>
+          <article class="panel"><div class="panel-head"><div><p class="eyebrow">05 · CHARACTER PROFILE</p><h3>Intro chapter × books appeared</h3></div><span class="panel-tag">One dot per record</span></div><div id="scatter-chart" class="chart"></div></article>
+          <article class="panel table-panel"><div class="panel-head"><div><p class="eyebrow">06 · RECORDS</p><h3>Character index</h3></div><span class="panel-tag" id="table-count"></span></div><div class="table-tools"><input id="table-search" type="search" placeholder="Search name or house…" aria-label="Search table"><span>Click column headers to sort</span></div><div class="table-wrap"><table><thead><tr><th data-sort="Name">Name</th><th data-sort="House">House</th><th data-sort="Death Year">Year</th><th data-sort="Book of Death">Book</th><th data-sort="Books Appeared">Books</th></tr></thead><tbody id="table-body"></tbody></table></div><div class="pagination"><span id="page-info"></span><div><button id="prev">Previous</button><button id="next">Next</button></div></div></article></section>
+        <footer>Source: <a href="https://github.com/TheMLGuy/Game-of-Thrones-Dataset" target="_blank" rel="noreferrer">TheMLGuy / Game-of-Thrones-Dataset</a> · Book data, not TV seasons · Missing values shown as unknown</footer>
+      </main>
+    </div>
+  </div>
+  <script src="data/characters.js"></script><script src="script.js"></script>
+</body></html>
